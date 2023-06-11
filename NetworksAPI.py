@@ -19,16 +19,17 @@ class Networks():
         self.nets = []
         for i in range(0, len(self.__netList), 10):
             self.nets.append(self.__netList[i:(i+10)])
-        
+
     def howmanyNets(self):
         return len(self.__netList) // 10
 
-    def show(self):
+    def getNetworks(self):
         # make a diccionary with networks
         self.networks = []
         self.__count = 0
         for net in self.nets:
             self.networks.append({
+                'Id' : self.__count + 1,
                 'SSID' : net[0].replace(f'SSID {self.__count+1} : ',''),
                 'Type' : net[1].replace('Tipo de red             : ',''),
                 'Authentication': net[2].replace('Autenticacin           : ', ''),
@@ -37,15 +38,11 @@ class Networks():
                 'Signal' : net[5].replace('Seal              : ',''),
                 'dBm' : convert2dBm(int(net[5].replace('Seal              : ','').replace('%',''))),
                 'Radio': net[6].replace('Tipo de radio      : ',''),
-                'Channel' : net[7].replace('Canal              : ','')
+                'Channel' : net[7].replace('Canal              : ',''),
+                'Basic_rates_(Mbps)' : net[8].replace('Velocidades bsicas (Mbps): ', ''),
+                'Other_rates _(Mbps)' : net[9].replace('Otras velocidades (Mbps): ','')
+
             })
-            print(self.networks[self.__count])
             self.__count += 1
-
-
-
-
-
-networks = Networks()
-
-print(networks.show())
+        
+        return self.networks
