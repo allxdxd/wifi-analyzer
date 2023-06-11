@@ -36,7 +36,8 @@ class Networks():
                 'BSSID' : net[4].replace('BSSID 1             : ', ''),
                 'Signal' : net[5].replace('Seal              : ',''),
                 'dBm' : convert2dBm(int(net[5].replace('Seal              : ','').replace('%',''))),
-                'Radio': net[6].replace('Tipo de radio      : ','')
+                'Radio': net[6].replace('Tipo de radio      : ',''),
+                'Channel' : net[7].replace('Canal              : ','')
             })
             print(self.networks[self.__count])
             self.__count += 1
