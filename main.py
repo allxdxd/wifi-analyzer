@@ -1,5 +1,10 @@
 from NetworksAPI import Networks
+import pandas as pd
 
-networks = Networks()
+# initialize class
+nt = Networks()
 
-print(networks.getNetworks())
+# create a dataframe
+netDataframe = nt.convert_Dataframe()
+print(netDataframe)
+
